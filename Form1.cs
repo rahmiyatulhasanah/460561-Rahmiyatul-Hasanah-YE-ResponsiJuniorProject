@@ -45,9 +45,9 @@ namespace _460561_Responsi
                 conn.Open();
 
                 // Command SQL yang akan dijalankan oleh PostgreSQL
-                sql = @"SELECT * FROM kr_insert(:_id_karyawan:_nama_karyawan, :_id_dep)";
+                sql = @"SELECT * FROM kr_insert(:_nama_karyawan, :_id_dep)";
                 cmd = new NpgsqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("_id_karyawan", tb_idk.Text);
+                //cmd.Parameters.AddWithValue("_id_karyawan", tb_idk.Text);
                 cmd.Parameters.AddWithValue("_nama_karyawan", tb_namak.Text);
                 cmd.Parameters.AddWithValue("_id_dep", tb_id_dep.Text);
 
@@ -100,7 +100,7 @@ namespace _460561_Responsi
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error:" + ex.Message, "Update FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error:" + ex.Message, "Update GAGAL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -125,7 +125,7 @@ namespace _460561_Responsi
                     cmd.Parameters.AddWithValue("_id_karyawan", r.Cells["_id_karyawan"].Value.ToString());
                     if ((int)cmd.ExecuteScalar() == 1)
                     {
-                        MessageBox.Show("Data Users berhasil dihapus", "Well Done!",
+                        MessageBox.Show("Data Karyawan berhasil dihapus", "Well Done!",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
                         conn.Close();
                         btn_load.PerformClick();
@@ -157,7 +157,7 @@ namespace _460561_Responsi
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error:" + ex.Message, "FAIL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error:" + ex.Message, "GAGAL!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
